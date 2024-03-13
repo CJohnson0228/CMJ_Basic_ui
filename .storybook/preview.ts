@@ -1,9 +1,9 @@
 import type { Preview } from "@storybook/react";
-import 'the-new-css-reset'
 import { withThemeFromJSXProvider } from '@storybook/addon-themes'
 import { ThemeProvider } from '../src/styles/ThemeProvider'
 import { lightTheme } from "../src/styles/theme/lightTheme";
 import { darkTheme } from '../src/styles/theme/darkTheme';
+import CssBaseline from '../src/components/CssBaseline';
 
 const decorators = [
   withThemeFromJSXProvider({
@@ -13,7 +13,7 @@ const decorators = [
     },
     defaultTheme: 'dark',
     Provider: ThemeProvider,
-    GlobalStyles: 'the-new-css-reset',
+    GlobalStyles: CssBaseline,
   })
 ]
 
@@ -26,6 +26,19 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    backgrounds: {
+      default: 'Dark',
+      values: [
+        {
+          name: 'Dark',
+          value: '#212121',
+        },
+        {
+          name: 'Light',
+          value: '#dedede',
+        }
+      ]
+    }
   },
   decorators: decorators
 };
